@@ -6,7 +6,7 @@ export async function GET(
 ) {
     const { id } = await params;
     const playerData = {
-        id: id,
+        id: 2,
         name: 'Pat Cummins',
         role: 'Bowler',
         age: 31,
