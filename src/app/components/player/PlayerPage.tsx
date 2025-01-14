@@ -46,7 +46,7 @@ export default function PlayerPage({ player }: any) {
                         <CurrentForm data={player.currentForm} />
                     </div>
                 </CollapsibleSection>
-
+                
                 <CollapsibleSection title="Career Statistics">
                     <PlayerStats stats={player.careerStats} />
                 </CollapsibleSection>
@@ -68,13 +68,14 @@ function CollapsibleSection({ title, children }: { title: string, children: Reac
     return (
         <div className="border-b border-gray-800">
             <button
-                className="w-full px-4 py-3 flex justify-between items-center"
+                className="w-full px-4 py-3 flex  items-center"
                 onClick={() => setIsOpen(!isOpen)}
             >
-                <span>{title}</span>
                 <span className="material-icons">
                     {isOpen ? 'expand_less' : 'expand_more'}
                 </span>
+                <span className="font-bold">{title}</span>
+                
             </button>
             {isOpen && children}
         </div>

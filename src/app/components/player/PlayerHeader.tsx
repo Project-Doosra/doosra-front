@@ -21,7 +21,7 @@ export default function PlayerHeader({ player }: PlayerHeaderProps) {
                 className="absolute inset-0 bg-cover bg-center"
                 style={{ 
                     backgroundImage: `url(${player.headerImage})`,
-                    backgroundPosition: 'center 20%'
+                    backgroundPosition: 'center 50%'
                 }}
             >
                 <div className="absolute inset-0 bg-gradient-to-b from-black/50 to-black" />

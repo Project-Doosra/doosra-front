@@ -19,7 +19,6 @@ interface PageProps {
 export default async function PlayerDetailPage({ params }: PageProps) {
     const { id } = await params;
     const player = await getPlayer(id);
-    console.log({player});
     return (
         <div className="min-h-screen bg-primary">
             <PlayerPage player={player} />
