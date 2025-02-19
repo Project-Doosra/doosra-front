@@ -12,7 +12,7 @@ export default function Home() {
       <Header />
       <div className="px-4 py-2">
         <Banner />
-        <SearchBar />
+        <SearchBar type="full" />
         <UpcomingMatches />
         <TopPicks />
       </div>
