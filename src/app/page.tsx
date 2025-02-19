@@ -8,7 +8,7 @@ import SearchBar from "./components/layout/SearchBar";
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#121212] text-white pb-16">
+    <main className="min-h-screen bg-[#F5F9FC] text-[#1E1E1E] pb-16">
       <Header />
       <div className="px-4 py-2">
         <Banner />
