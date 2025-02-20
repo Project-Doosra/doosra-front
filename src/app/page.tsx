@@ -15,11 +15,16 @@ export default function Home() {
       <Header />
       <div className="px-4 py-2">
         <Banner />
+        {/* Container for desktop */}
         <Container className="hidden md:flex">
-        <SearchBar type="full" />
+        <SearchBar type="full" placeholder="Search players, predictions, teams, etc." />
+        <AdditionalLinks alignment="column"/>
+        <TrendingPlayers/>
+        <TopPicks />
         </Container>
+        {/* Container for mobile */}
         <Container className="flex md:hidden flex-col">
-        <SearchBar type="full" />
+        <SearchBar type="full" placeholder="Search players, predictions, teams, etc." />
         <TrendingPlayers />
         <TopPicks />
         <AdditionalLinks alignment="row"/>
