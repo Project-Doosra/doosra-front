@@ -63,7 +63,7 @@ export default async function TrendingPlayers() {
                   <img
                     src={player.teamLogo}
                     alt="Team"
-                    className="w-8 h-8 mt-auto"
+                    className="w-6 h-6 mt-auto"
                   />
                   </div>
                 </div>
