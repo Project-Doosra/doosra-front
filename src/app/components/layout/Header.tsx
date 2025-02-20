@@ -53,7 +53,7 @@ export default function Header() {
       className="!bg-[#F5F9FC] md:!bg-[#074799] !shadow-none md:!shadow-[0_4px_4px_rgba(0,0,0,0.25)]"
       enableColorOnDark
     >
-      <Container maxWidth="false" className="!mx-auto !px-8 md:!px-12">
+      <Container maxWidth={false} className="!mx-auto !px-8 md:!px-12">
         <Toolbar disableGutters>
           <Link href="/" className="!mr-auto hidden md:block">
             <Image

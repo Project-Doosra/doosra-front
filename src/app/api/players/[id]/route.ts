@@ -5,7 +5,7 @@ export async function GET(
     { params }: { params: Promise<{ id: string }> }
 ) {
     const { id } = await params;
-    const playerId = Number(id) as any;
+    const playerId = Number(id) as keyof typeof playerData;
     const playerData = {
         1: {
             id: 1,
