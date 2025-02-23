@@ -38,7 +38,7 @@ export default function Home() {
         </Container>
       </div>
       <Footer/>
-      <div className="md:hidden">
+      <div className="md:hidden fixed bottom-0 w-full">
       <BottomNavigation />
       </div>
     </main>
