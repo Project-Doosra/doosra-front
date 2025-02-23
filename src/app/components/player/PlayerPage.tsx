@@ -1,9 +1,6 @@
 "use client";
 import { useState } from "react";
 import PlayerHeader from "./PlayerHeader";
-import PlayerStats from "./PlayerStats";
-import CurrentForm from "./CurrentForm";
-import PlayerInfo from "./PlayerInfo";
 
 interface TabProps {
   label: string;
@@ -25,7 +22,7 @@ function Tab({ label, isActive, onClick }: TabProps) {
 }
 
 export default function PlayerPage({ player }: any) {
-  const tabs = ["Current form", "Carrer Stats", "More information"];
+  const tabs = ["Current form", "Career Stats", "More information"];
   const [activeTab, setActiveTab] = useState("Current form");
 
   return (
@@ -34,13 +31,22 @@ export default function PlayerPage({ player }: any) {
 
       {/* Collapsible Sections */}
       <div className="mt-4 bg-white rounded-t-xl">
-        {tabs.map((tab, i) => (
+        {/* {tabs.map((tab, i) => (
           <div key={i} onClick={() => setActiveTab(tab)}>
             <CollapsibleSection key={i} isOpen={tab == activeTab} title={tab}>
               <StatsTable />
             </CollapsibleSection>
           </div>
-        ))}
+        ))} */}
+        <CollapsibleSection title={"Current form"}>
+          <StatsTable />
+        </CollapsibleSection>
+        <CollapsibleSection title={"Carrer Stats"}>
+          <StatsTable />
+        </CollapsibleSection>
+        <CollapsibleSection title={"More information"}>
+          <StatsTable />
+        </CollapsibleSection>
       </div>
     </div>
   );
@@ -49,21 +55,31 @@ export default function PlayerPage({ player }: any) {
 function CollapsibleSection({
   title,
   children,
-  isOpen = false,
-}: {
+}: // isOpen = false,
+{
   title: string;
   children: React.ReactNode;
-  isOpen: boolean;
+  // isOpen: boolean;
 }) {
+  const [isOpen, setIsOpen] = useState(false);
   return (
     <div className=" bg-white  text-black border-[#074799] border-t-4 rounded-t-xl">
-      <button className="w-full rounded-2xl px-4 py-3 flex  items-center">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full rounded-2xl px-4 py-3 flex  items-center"
+      >
         <span className="material-icons">
           {isOpen ? "expand_less" : "expand_more"}
         </span>
         <span className="font-bold">{title}</span>
       </button>
-      {isOpen && children}
+      <div
+        className={`transition-[max-height] duration-300 ease-in-out overflow-hidden ${
+          isOpen ? "max-h-[500px] " : "max-h-0"
+        }`}
+      >
+        {children}
+      </div>
     </div>
   );
 }
@@ -367,7 +383,7 @@ const StatsTable = () => {
   };
 
   return (
-    <div className="w-full bg-white p-4 rounded-lg shadow-md">
+    <div className="w-full bg-white p-4 rounded-lg ">
       {/* Tabs */}
       <div className="flex justify-center mb-3">
         {tabs.map((tab, i) => (
@@ -393,10 +409,10 @@ const StatsTable = () => {
 
       {/* Table */}
       <div className="overflow-x-auto">
-        <table className="w-full border border-gray-300 text-sm">
+        <table className="w-full border  border-gray-300 text-sm">
           <thead>
             <tr className="bg-[#074799] text-white">
-              <th className="px-3 py-2 text-left">Batting</th>
+              <th className="px-3 py-2 text-left ">Batting</th>
               <th className="px-3 py-2">Mat</th>
               <th className="px-3 py-2">Inns</th>
               <th className="px-3 py-2">Runs</th>
@@ -413,7 +429,7 @@ const StatsTable = () => {
                 key={index}
                 className={`${index % 2 === 0 ? "bg-gray-100" : "bg-gray-300"}`}
               >
-                <td className="px-3 py-2 font-medium">{row.type}</td>
+                <td className="px-3 py-2 font-medium bg-none">{row.type}</td>
                 <td className="px-3 py-2">{row.Mat}</td>
                 <td className="px-3 py-2">{row.Inns}</td>
                 <td className="px-3 py-2">{row.Runs}</td>

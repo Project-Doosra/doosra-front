@@ -1,14 +1,16 @@
 "use client";
+import { getCountryFlagUrl } from "@/lib/utils";
+import Image from "next/image";
 import { BiCricketBall } from "react-icons/bi";
-import { FaBaseballBatBall } from "react-icons/fa6";
-import { GiCricketBat } from "react-icons/gi";
-import { MdSportsCricket } from "react-icons/md";
 import { FaPerson } from "react-icons/fa6";
-import { GiWinterGloves } from "react-icons/gi";
-
+import { GiCricketBat, GiWinterGloves } from "react-icons/gi";
+import { MdSportsCricket } from "react-icons/md";
+import LogoImg from "../../../../public/doosra.svg";
 interface PlayerHeaderProps {
   player: {
     name: string;
+    firstName: string;
+    lastName: string;
     role: string;
     age: number;
     bowlingStyle: string;
@@ -42,7 +44,7 @@ export default function PlayerHeader({ player }: PlayerHeaderProps) {
   };
 
   return (
-    <div className="relative h-[280px]">
+    <div className="relative h-[320px]">
       {/* Background Image */}
       <div
         className="absolute inset-0 bg-cover bg-no-repeat bg-center"
@@ -55,19 +57,30 @@ export default function PlayerHeader({ player }: PlayerHeaderProps) {
       </div>
 
       {/* Content */}
-      <div className="relative h-full p-6">
+      <div className="relative h-full p-6 pt-3">
         <div className="flex items-center justify-between">
           <button className="text-white" onClick={() => window.history.back()}>
             <span className="material-icons">arrow_back</span>
           </button>
-          <span className="text-[#FFB800]">Doosra</span>
+          <span className="text-[#FFB800]">
+            <Image
+              src={LogoImg}
+              height={100}
+              alt="img"
+              width={100}
+              className="w-30"
+            />
+          </span>
+          <div></div>
         </div>
 
-        <div className="mt-36 bottom-6 w-full ">
-          <div className="flex items-center gap-2 mb-4">
-            <h1 className="text-3xl font-bold">{player.name}</h1>
+        <div className="mt-40 bottom-6 w-full ">
+          <div className="flex flex-col mb-2">
+            {/* <h1 className="text-3xl fontbold">{player.name}</h1> */}
+            <h1 className="text-xl ">{player.firstName}</h1>
+            <h1 className="text-3xl font-bold">{player.lastName}</h1>
           </div>
-          <div className="flex items-center gap-8">
+          <div className="flex justify-between items-center gap-8">
             <div className="flex items-center gap-2">
               <div>{getRoleIcon(player.role)}</div>
               <div className="text-xs">
@@ -84,13 +97,13 @@ export default function PlayerHeader({ player }: PlayerHeaderProps) {
                 <span>{player.dob}</span>
               </div>
             </div>
-            <div className="flex flex-col items-center gap-2">
+            <div className="flex flex-col items-center">
               <span className="text-sm">{player.country}</span>
-              {/* <img
-                src={player.teamLogo}
-                alt={player.country}
-                className="w-2 h-2"
-              /> */}
+              <img
+                src={getCountryFlagUrl("Australia")}
+                // alt={player.country}
+                className="w-6"
+              />
             </div>
           </div>
         </div>

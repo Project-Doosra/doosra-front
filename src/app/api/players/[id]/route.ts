@@ -10,6 +10,8 @@ export async function GET(
         1: {
             id: 1,
             name: 'Pat Cummins',
+            firstName: 'Pat',
+            lastName: 'Cummins',
             role: 'Bowler',
             age: 31,
             bowlingStyle: 'Right arm fast',
