@@ -1,3 +1,4 @@
+"use client"
 import React from "react";
 import SampleLogo from "../../../../public/doosra.svg";
 import { Link } from "@mui/material";
