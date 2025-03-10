@@ -27,7 +27,7 @@ export default function PlayerPage({ player }: any) {
 
   return (
     <div className="min-h-screen bg-black text-white">
-      <PlayerHeader player={player} />
+      <PlayerHeader player={player.player} />
 
       {/* Collapsible Sections */}
       <div className="mt-4 bg-white rounded-t-xl">
@@ -39,14 +39,14 @@ export default function PlayerPage({ player }: any) {
           </div>
         ))} */}
         <CollapsibleSection title={"Current form"}>
-          <StatsTable />
+          <StatsTable stats={player.stats} />
         </CollapsibleSection>
-        <CollapsibleSection title={"Carrer Stats"}>
+        {/* <CollapsibleSection title={"Carrer Stats"}>
           <StatsTable />
         </CollapsibleSection>
         <CollapsibleSection title={"More information"}>
           <StatsTable />
-        </CollapsibleSection>
+        </CollapsibleSection> */}
       </div>
     </div>
   );
@@ -84,303 +84,303 @@ function CollapsibleSection({
   );
 }
 
-const StatsTable = () => {
+const StatsTable = ({ stats }: any) => {
   // Define Tabs
-  const tabs = ["IPL", "T20-I", "ODI", "Test"];
+  const tabs = ["IPL"];
   const [activeTab, setActiveTab] = useState("IPL");
-
-  // Dummy Stats Data (Replace with API data if needed)
-  const stats: any = {
-    IPL: {
-      batting: [
-        {
-          type: "Overall",
-          Mat: 115,
-          Inns: 115,
-          Runs: 115,
-          SR: 115,
-          "50s": 115,
-          "100s": 115,
-          NO: 115,
-          HS: 115,
-        },
-        {
-          type: "At home",
-          Mat: 115,
-          Inns: 115,
-          Runs: 115,
-          SR: 115,
-          "50s": 115,
-          "100s": 115,
-          NO: 115,
-          HS: 115,
-        },
-        {
-          type: "Away",
-          Mat: 115,
-          Inns: 115,
-          Runs: 115,
-          SR: 115,
-          "50s": 115,
-          "100s": 115,
-          NO: 115,
-          HS: 115,
-        },
-      ],
-      bowling: [
-        {
-          type: "Overall",
-          Mat: 115,
-          Ovrs: 115,
-          Runs: 115,
-          Wkt: 115,
-          Mdn: 115,
-          BBI: 115,
-          "5w": 115,
-          Eco: 115,
-        },
-        {
-          type: "At home",
-          Mat: 115,
-          Ovrs: 115,
-          Runs: 115,
-          Wkt: 115,
-          Mdn: 115,
-          BBI: 115,
-          "5w": 115,
-          Eco: 115,
-        },
-        {
-          type: "Away",
-          Mat: 115,
-          Ovrs: 115,
-          Runs: 115,
-          Wkt: 115,
-          Mdn: 115,
-          BBI: 115,
-          "5w": 115,
-          Eco: 115,
-        },
-      ],
-    },
-    // Add similar data for T20-I, ODI, Test if needed
-    "T20-I": {
-      batting: [
-        {
-          type: "Overall",
-          Mat: 120,
-          Inns: 120,
-          Runs: 120,
-          SR: 120,
-          "50s": 120,
-          "100s": 120,
-          NO: 120,
-          HS: 120,
-        },
-        {
-          type: "At home",
-          Mat: 120,
-          Inns: 120,
-          Runs: 120,
-          SR: 120,
-          "50s": 120,
-          "100s": 120,
-          NO: 120,
-          HS: 120,
-        },
-        {
-          type: "Away",
-          Mat: 120,
-          Inns: 120,
-          Runs: 120,
-          SR: 120,
-          "50s": 120,
-          "100s": 120,
-          NO: 115,
-          HS: 115,
-        },
-      ],
-      bowling: [
-        {
-          type: "Overall",
-          Mat: 115,
-          Ovrs: 115,
-          Runs: 115,
-          Wkt: 115,
-          Mdn: 115,
-          BBI: 115,
-          "5w": 115,
-          Eco: 115,
-        },
-        {
-          type: "At home",
-          Mat: 115,
-          Ovrs: 115,
-          Runs: 115,
-          Wkt: 115,
-          Mdn: 115,
-          BBI: 115,
-          "5w": 115,
-          Eco: 115,
-        },
-        {
-          type: "Away",
-          Mat: 115,
-          Ovrs: 115,
-          Runs: 115,
-          Wkt: 115,
-          Mdn: 115,
-          BBI: 115,
-          "5w": 115,
-          Eco: 115,
-        },
-      ],
-    },
-    ODI: {
-      batting: [
-        {
-          type: "Overall",
-          Mat: 115,
-          Inns: 115,
-          Runs: 115,
-          SR: 115,
-          "50s": 115,
-          "100s": 115,
-          NO: 115,
-          HS: 115,
-        },
-        {
-          type: "At home",
-          Mat: 115,
-          Inns: 115,
-          Runs: 115,
-          SR: 115,
-          "50s": 115,
-          "100s": 115,
-          NO: 115,
-          HS: 115,
-        },
-        {
-          type: "Away",
-          Mat: 115,
-          Inns: 115,
-          Runs: 115,
-          SR: 115,
-          "50s": 115,
-          "100s": 115,
-          NO: 115,
-          HS: 115,
-        },
-      ],
-      bowling: [
-        {
-          type: "Overall",
-          Mat: 115,
-          Ovrs: 115,
-          Runs: 115,
-          Wkt: 115,
-          Mdn: 115,
-          BBI: 115,
-          "5w": 115,
-          Eco: 115,
-        },
-        {
-          type: "At home",
-          Mat: 115,
-          Ovrs: 115,
-          Runs: 115,
-          Wkt: 115,
-          Mdn: 115,
-          BBI: 115,
-          "5w": 115,
-          Eco: 115,
-        },
-        {
-          type: "Away",
-          Mat: 115,
-          Ovrs: 115,
-          Runs: 115,
-          Wkt: 115,
-          Mdn: 115,
-          BBI: 115,
-          "5w": 115,
-          Eco: 115,
-        },
-      ],
-    },
-    Test: {
-      batting: [
-        {
-          type: "Overall",
-          Mat: 115,
-          Inns: 115,
-          Runs: 115,
-          SR: 115,
-          "50s": 115,
-          "100s": 115,
-          NO: 115,
-          HS: 115,
-        },
-        {
-          type: "At home",
-          Mat: 115,
-          Inns: 115,
-          Runs: 115,
-          SR: 115,
-          "50s": 115,
-          "100s": 115,
-          NO: 115,
-          HS: 115,
-        },
-        {
-          type: "Away",
-          Mat: 115,
-          Inns: 115,
-          Runs: 115,
-          SR: 115,
-          "50s": 115,
-          "100s": 115,
-          NO: 115,
-          HS: 115,
-        },
-      ],
-      bowling: [
-        {
-          type: "Overall",
-          Mat: 115,
-          Ovrs: 115,
-          Runs: 115,
-          Wkt: 115,
-          Mdn: 115,
-          BBI: 115,
-          "5w": 115,
-          Eco: 115,
-        },
-        {
-          type: "At home",
-          Mat: 115,
-          Ovrs: 115,
-          Runs: 115,
-          Wkt: 115,
-          Mdn: 115,
-          BBI: 115,
-          "5w": 115,
-          Eco: 115,
-        },
-        {
-          type: "Away",
-          Mat: 115,
-          Ovrs: 115,
-          Runs: 115,
-          Wkt: 115,
-          Mdn: 115,
-          BBI: 115,
-          "5w": 115,
-          Eco: 115,
-        },
-      ],
-    },
-  };
+  console.log(stats);
+  // // Dummy Stats Data (Replace with API data if needed)
+  // const stats: any = {
+  //   IPL: {
+  //     batting: [
+  //       {
+  //         type: "Overall",
+  //         Mat: 115,
+  //         Inns: 115,
+  //         Runs: 115,
+  //         SR: 115,
+  //         "50s": 115,
+  //         "100s": 115,
+  //         NO: 115,
+  //         HS: 115,
+  //       },
+  //       {
+  //         type: "At home",
+  //         Mat: 115,
+  //         Inns: 115,
+  //         Runs: 115,
+  //         SR: 115,
+  //         "50s": 115,
+  //         "100s": 115,
+  //         NO: 115,
+  //         HS: 115,
+  //       },
+  //       {
+  //         type: "Away",
+  //         Mat: 115,
+  //         Inns: 115,
+  //         Runs: 115,
+  //         SR: 115,
+  //         "50s": 115,
+  //         "100s": 115,
+  //         NO: 115,
+  //         HS: 115,
+  //       },
+  //     ],
+  //     bowling: [
+  //       {
+  //         type: "Overall",
+  //         Mat: 115,
+  //         Ovrs: 115,
+  //         Runs: 115,
+  //         Wkt: 115,
+  //         Mdn: 115,
+  //         BBI: 115,
+  //         "5w": 115,
+  //         Eco: 115,
+  //       },
+  //       {
+  //         type: "At home",
+  //         Mat: 115,
+  //         Ovrs: 115,
+  //         Runs: 115,
+  //         Wkt: 115,
+  //         Mdn: 115,
+  //         BBI: 115,
+  //         "5w": 115,
+  //         Eco: 115,
+  //       },
+  //       {
+  //         type: "Away",
+  //         Mat: 115,
+  //         Ovrs: 115,
+  //         Runs: 115,
+  //         Wkt: 115,
+  //         Mdn: 115,
+  //         BBI: 115,
+  //         "5w": 115,
+  //         Eco: 115,
+  //       },
+  //     ],
+  //   },
+  //   // Add similar data for T20-I, ODI, Test if needed
+  //   "T20-I": {
+  //     batting: [
+  //       {
+  //         type: "Overall",
+  //         Mat: 120,
+  //         Inns: 120,
+  //         Runs: 120,
+  //         SR: 120,
+  //         "50s": 120,
+  //         "100s": 120,
+  //         NO: 120,
+  //         HS: 120,
+  //       },
+  //       {
+  //         type: "At home",
+  //         Mat: 120,
+  //         Inns: 120,
+  //         Runs: 120,
+  //         SR: 120,
+  //         "50s": 120,
+  //         "100s": 120,
+  //         NO: 120,
+  //         HS: 120,
+  //       },
+  //       {
+  //         type: "Away",
+  //         Mat: 120,
+  //         Inns: 120,
+  //         Runs: 120,
+  //         SR: 120,
+  //         "50s": 120,
+  //         "100s": 120,
+  //         NO: 115,
+  //         HS: 115,
+  //       },
+  //     ],
+  //     bowling: [
+  //       {
+  //         type: "Overall",
+  //         Mat: 115,
+  //         Ovrs: 115,
+  //         Runs: 115,
+  //         Wkt: 115,
+  //         Mdn: 115,
+  //         BBI: 115,
+  //         "5w": 115,
+  //         Eco: 115,
+  //       },
+  //       {
+  //         type: "At home",
+  //         Mat: 115,
+  //         Ovrs: 115,
+  //         Runs: 115,
+  //         Wkt: 115,
+  //         Mdn: 115,
+  //         BBI: 115,
+  //         "5w": 115,
+  //         Eco: 115,
+  //       },
+  //       {
+  //         type: "Away",
+  //         Mat: 115,
+  //         Ovrs: 115,
+  //         Runs: 115,
+  //         Wkt: 115,
+  //         Mdn: 115,
+  //         BBI: 115,
+  //         "5w": 115,
+  //         Eco: 115,
+  //       },
+  //     ],
+  //   },
+  //   ODI: {
+  //     batting: [
+  //       {
+  //         type: "Overall",
+  //         Mat: 115,
+  //         Inns: 115,
+  //         Runs: 115,
+  //         SR: 115,
+  //         "50s": 115,
+  //         "100s": 115,
+  //         NO: 115,
+  //         HS: 115,
+  //       },
+  //       {
+  //         type: "At home",
+  //         Mat: 115,
+  //         Inns: 115,
+  //         Runs: 115,
+  //         SR: 115,
+  //         "50s": 115,
+  //         "100s": 115,
+  //         NO: 115,
+  //         HS: 115,
+  //       },
+  //       {
+  //         type: "Away",
+  //         Mat: 115,
+  //         Inns: 115,
+  //         Runs: 115,
+  //         SR: 115,
+  //         "50s": 115,
+  //         "100s": 115,
+  //         NO: 115,
+  //         HS: 115,
+  //       },
+  //     ],
+  //     bowling: [
+  //       {
+  //         type: "Overall",
+  //         Mat: 115,
+  //         Ovrs: 115,
+  //         Runs: 115,
+  //         Wkt: 115,
+  //         Mdn: 115,
+  //         BBI: 115,
+  //         "5w": 115,
+  //         Eco: 115,
+  //       },
+  //       {
+  //         type: "At home",
+  //         Mat: 115,
+  //         Ovrs: 115,
+  //         Runs: 115,
+  //         Wkt: 115,
+  //         Mdn: 115,
+  //         BBI: 115,
+  //         "5w": 115,
+  //         Eco: 115,
+  //       },
+  //       {
+  //         type: "Away",
+  //         Mat: 115,
+  //         Ovrs: 115,
+  //         Runs: 115,
+  //         Wkt: 115,
+  //         Mdn: 115,
+  //         BBI: 115,
+  //         "5w": 115,
+  //         Eco: 115,
+  //       },
+  //     ],
+  //   },
+  //   Test: {
+  //     batting: [
+  //       {
+  //         type: "Overall",
+  //         Mat: 115,
+  //         Inns: 115,
+  //         Runs: 115,
+  //         SR: 115,
+  //         "50s": 115,
+  //         "100s": 115,
+  //         NO: 115,
+  //         HS: 115,
+  //       },
+  //       {
+  //         type: "At home",
+  //         Mat: 115,
+  //         Inns: 115,
+  //         Runs: 115,
+  //         SR: 115,
+  //         "50s": 115,
+  //         "100s": 115,
+  //         NO: 115,
+  //         HS: 115,
+  //       },
+  //       {
+  //         type: "Away",
+  //         Mat: 115,
+  //         Inns: 115,
+  //         Runs: 115,
+  //         SR: 115,
+  //         "50s": 115,
+  //         "100s": 115,
+  //         NO: 115,
+  //         HS: 115,
+  //       },
+  //     ],
+  //     bowling: [
+  //       {
+  //         type: "Overall",
+  //         Mat: 115,
+  //         Ovrs: 115,
+  //         Runs: 115,
+  //         Wkt: 115,
+  //         Mdn: 115,
+  //         BBI: 115,
+  //         "5w": 115,
+  //         Eco: 115,
+  //       },
+  //       {
+  //         type: "At home",
+  //         Mat: 115,
+  //         Ovrs: 115,
+  //         Runs: 115,
+  //         Wkt: 115,
+  //         Mdn: 115,
+  //         BBI: 115,
+  //         "5w": 115,
+  //         Eco: 115,
+  //       },
+  //       {
+  //         type: "Away",
+  //         Mat: 115,
+  //         Ovrs: 115,
+  //         Runs: 115,
+  //         Wkt: 115,
+  //         Mdn: 115,
+  //         BBI: 115,
+  //         "5w": 115,
+  //         Eco: 115,
+  //       },
+  //     ],
+  //   },
+  // };
 
   return (
     <div className="w-full bg-white p-4 rounded-lg ">
@@ -389,7 +389,7 @@ const StatsTable = () => {
         {tabs.map((tab, i) => (
           <button
             key={tab}
-            className={`px-4  py-2 text-sm font-medium  ${
+            className={`px-4  py-2 rounded-xl text-sm font-medium  ${
               activeTab === tab
                 ? "bg-[#074799] text-white"
                 : "bg-gray-200 text-gray-700"
@@ -424,7 +424,7 @@ const StatsTable = () => {
             </tr>
           </thead>
           <tbody>
-            {stats[activeTab].batting.map((row: any, index: any) => (
+            {stats.batting.map((row: any, index: any) => (
               <tr
                 key={index}
                 className={`${index % 2 === 0 ? "bg-gray-100" : "bg-gray-300"}`}
@@ -458,7 +458,7 @@ const StatsTable = () => {
             </tr>
           </thead>
           <tbody>
-            {stats[activeTab].bowling.map((row: any, index: any) => (
+            {stats.bowling.map((row: any, index: any) => (
               <tr
                 key={index}
                 className={`${index % 2 === 0 ? "bg-gray-100" : "bg-gray-300"}`}

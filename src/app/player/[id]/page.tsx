@@ -3,15 +3,20 @@ import BottomNavigation from "@/app/components/layout/BottomNavigation";
 import Footer from "@/app/components/layout/Footer";
 import PlayerPage from "@/app/components/player/PlayerPage";
 import { getBaseUrl } from "@/lib/utils";
+import axios from "axios";
 
 async function getPlayer(id: string) {
-  const res = await fetch(`${getBaseUrl()}/api/players/${id}`, {
-    cache: "no-store",
-  });
-  if (!res.ok) {
-    throw new Error("Failed to fetch player");
-  }
-  return res.json();
+  // const res = await fetch(`${getBaseUrl()}/api/players/${id}`, {
+  //   cache: "no-store",
+  // });
+  // if (!res.ok) {
+  //   throw new Error("Failed to fetch player");
+  // }
+  // return res.json();
+  const res = await axios.get(`http://localhost:8080/player/${id}`);
+
+
+  return res.data;
 }
 
 interface PageProps {
