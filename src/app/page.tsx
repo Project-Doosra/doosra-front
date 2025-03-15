@@ -1,3 +1,4 @@
+"use client"
 import { Container } from "@mui/material";
 import TopPicks from "./components/home/TopPicks";
 import UpcomingMatches from "./components/home/UpcomingMatches";
