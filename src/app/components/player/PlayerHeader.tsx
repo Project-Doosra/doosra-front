@@ -1,11 +1,11 @@
 "use client";
-import { getCountryFlagUrl } from "@/lib/utils";
 import Image from "next/image";
 import { BiCricketBall } from "react-icons/bi";
 import { FaPerson } from "react-icons/fa6";
 import { GiCricketBat, GiWinterGloves } from "react-icons/gi";
 import { MdSportsCricket } from "react-icons/md";
 import LogoImg from "../../../../public/doosra.svg";
+import { getCountryFlagUrl } from "@/lib/getFlags";
 interface PlayerHeaderProps {
   player: {
     name: string;
@@ -14,6 +14,7 @@ interface PlayerHeaderProps {
     role: string;
     age: number;
     bowlingStyle: string;
+    battingStyle: string;
     dob: string;
     country: string;
     teamLogo: string;
@@ -57,7 +58,7 @@ export default function PlayerHeader({ player }: PlayerHeaderProps) {
       </div>
 
       {/* Content */}
-      <div className="relative h-full p-6 pt-3">
+      <div className="relative h-full py-6 px-4 pt-3">
         <div className="flex items-center justify-between">
           <button className="text-white" onClick={() => window.history.back()}>
             <span className="material-icons">arrow_back</span>
@@ -80,25 +81,32 @@ export default function PlayerHeader({ player }: PlayerHeaderProps) {
             <h1 className="text-xl ">{player.firstName}</h1>
             <h1 className="text-3xl font-bold">{player.lastName}</h1>
           </div>
-          <div className="flex justify-between items-center gap-8">
+          <div className="text-[10px] flex justify-between items-center gap-2">
             <div className="flex items-center gap-2">
-              <div>{getRoleIcon(player.role)}</div>
-              <div className="text-xs">
-                <div>{player.role}</div>
-                <span>{player.bowlingStyle}</span>
+              <div>{getRoleIcon("Batsman")}</div>
+              <div className="">
+                <div>Batting</div>
+                <span>{player.battingStyle}</span>
               </div>
             </div>
             <div className="flex items-center gap-2">
+              <div>{getRoleIcon("Bowler")}</div>
+              <div className="">
+                <div>Bowling</div>
+                <span className="">{player.bowlingStyle}</span>
+              </div>
+            </div>
+            <div className="flex items-center gap-1">
               <div>
                 <FaPerson className="text-2xl" />
               </div>
-              <div className="text-xs">
+              <div className="">
                 <div>{player.age}</div>
                 <span>{player.dob}</span>
               </div>
             </div>
             <div className="flex flex-col items-center">
-              <span className="text-sm">{player.country}</span>
+              <span className="">{player.country}</span>
               <img
                 src={getCountryFlagUrl("Australia")}
                 // alt={player.country}
