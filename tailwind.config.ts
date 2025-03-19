@@ -18,6 +18,7 @@ export default {
     },
     extend: {
       colors: {
+        "doosra-blue": "#074799",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
