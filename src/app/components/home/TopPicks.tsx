@@ -37,7 +37,7 @@ export default async function TopPicks() {
           style={{ minWidth: "min-content" }}
         >
           {players.map((player: any) => (
-            <Link href={`/player/${player.id}`} key={player.id}>
+            <Link href={`/players/${player.id}`} key={player.id}>
               <div className="bg-[#FFFFFF] border-2 border-black rounded-[0.5rem] pl-2 pt-2 w-full flex-shrink-0 cursor-pointer hover:bg-[#EEEEEE] transition-colors">
                 <div className="flex items-start justify-between mb-2 px-1">
                   <img src={player.teamLogo} alt="Team" className="w-6 h-6" />

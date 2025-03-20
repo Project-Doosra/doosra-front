@@ -3,17 +3,17 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { HiOutlineSparkles } from "react-icons/hi2";
 
-interface SearchBarProps {
+interface PlayerSearchBarProps {
   type: "basic" | "full";
   placeholder?: string;
 }
 
 // Use type prop to render different search bar styles
-export default function SearchBar({ type, placeholder }: SearchBarProps) {
+export default function PlayerSearchBar({ type, placeholder }: PlayerSearchBarProps) {
   const [searchText, setSearchText] = useState("");
   const router = useRouter();
 
-  const handleSearch = () => {
+  const handlePlayerSearch = () => {
     if (!searchText.trim()) return;
     const query = searchText.trim().replace(/\s+/g, "-");
     router.push(`/search/${query}`);
@@ -22,12 +22,6 @@ export default function SearchBar({ type, placeholder }: SearchBarProps) {
     <div className="search-bar-container">
       {type === "full" && (
         <>
-          <h3 className="text-[#074799] text-md font-bold flex items-center gap-1 mt-3 mb-3">
-            Featured AI search{" "}
-            <span>
-              <HiOutlineSparkles size={20} />
-            </span>
-          </h3>
           <div className="basic-search-bar relative">
             <div className="relative w-full">
               <input
@@ -75,15 +69,15 @@ export default function SearchBar({ type, placeholder }: SearchBarProps) {
           <input
             type="text"
             placeholder={
-              placeholder || "Search players, predictions, teams etc."
+              placeholder || "Search any player"
             }
             value={searchText}
             onFocus={(e) => setSearchText(" ")}
             onChange={(e) => setSearchText(e.target.value)}
-            onKeyDown={(e) => e.key === "Enter" && handleSearch()}
-            className="rounded-[0.5rem] bg-[#FFFFFF] !shadow-[0_4px_4px_rgba(0,0,0,0.25)] pl-12 pr-48 py-2 text-sm text-black placeholder-gray-800 focus:outline focus:outline-blue-500"
+            onKeyDown={(e) => e.key === "Enter" && handlePlayerSearch()}
+            className="border-black border-2 rounded-[0.9rem] bg-[#FFFFFF] pl-6 font-semibold pr-48 py-2 text-sm text-black placeholder-gray-600 focus:outline focus:outline-blue-300 w-full"
           />
-          <div className="absolute left-3 top-1/2 -translate-y-1/2">
+          <div className="absolute right-3 top-1/2 -translate-y-1/2">
             <svg
               width="16"
               height="16"

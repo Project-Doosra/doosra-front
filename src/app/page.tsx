@@ -1,6 +1,6 @@
 import { Container } from "@mui/material";
 import TopPicks from "./components/home/TopPicks";
-import UpcomingMatches from "./components/home/UpcomingMatches";
+import UpcomingMatches from "./components/home/LiveScores";
 import Banner from "./components/layout/Banner";
 import BottomNavigation from "./components/layout/BottomNavigation";
 import Header from "./components/layout/Header";
@@ -8,6 +8,7 @@ import SearchBar from "./components/layout/SearchBar";
 import TrendingPlayers from "./components/home/TrendingPlayers";
 import AdditionalLinks from "./components/home/AdditionalLinks";
 import Footer from "./components/layout/Footer";
+import LiveScores from "./components/home/LiveScores";
 
 export default function Home() {
   return (
@@ -33,6 +34,7 @@ export default function Home() {
         </Container>
         {/* Container for mobile */}
         <Container className="flex md:hidden flex-col">
+          <LiveScores />
           <SearchBar
             type="full"
             placeholder="Search players, predictions, teams, etc."

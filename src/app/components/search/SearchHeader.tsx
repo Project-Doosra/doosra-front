@@ -19,19 +19,15 @@ import SampleLogo from "../../../../public/doosra.svg";
 import Image from "next/image";
 import { useState } from "react";
 import { HiMenu } from "react-icons/hi";
-import { PiUserLight, PiUsersThree } from "react-icons/pi";
-import SearchBar from "./SearchBar";
-import Sidebar from "../home/Sidebar";
-import { IoInformationCircleOutline, } from "react-icons/io5";
-import { FaRegNewspaper } from "react-icons/fa";
-import { IoIosSearch } from "react-icons/io";
-import { GoHome } from "react-icons/go";
+import { PiUserLight } from "react-icons/pi";
 
-export default function Header() {
+export default function SearchHeader() {
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
 
-  const [hamburgerOpen, setHamburgerOpen] = useState<boolean>(false);
+  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
+    setAnchorElNav(event.currentTarget);
+  };
   const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElUser(event.currentTarget);
   };
@@ -44,7 +40,7 @@ export default function Header() {
     setAnchorElUser(null);
   };
 
-  const pages = [{ title: "Home", url: "/", icon: <GoHome/>  }, {title: "About Us", url: "/about-us", icon: <IoInformationCircleOutline/>}, { title: "Players", url: "/players", icon: <PiUsersThree/> }, { title: "Search", url: "/search", icon: <IoIosSearch/> }, { title: "Blogs", url: "/blogs", icon: <FaRegNewspaper/> }];
+  const pages = ["Home", "Players", "Teams", "Blogs"];
   const settings = ["Profile", "Account", "Dashboard", "Logout"];
 
   return (
@@ -66,9 +62,6 @@ export default function Header() {
               height={160}
             />
           </Link>
-          <div className="md:ml-16 hidden md:block">
-            <SearchBar type="basic" placeholder="Search" />
-          </div>
           {/* Mobile screen menu - TODO replace with drawer or sidebar */}
           <Box
             sx={{
@@ -85,11 +78,10 @@ export default function Header() {
               aria-label="account of current user"
               aria-controls="menu-appbar"
               aria-haspopup="true"
-              onClick={() => {setHamburgerOpen(!hamburgerOpen)}}
+              onClick={handleOpenNavMenu}
             >
               <HiMenu color="black" size={32} />
             </IconButton>
-            <Sidebar isOpen={hamburgerOpen} setIsOpen={setHamburgerOpen} pages={pages}/>
 
             {/* TODO - Center on mobile screens */}
             {/* Mobile Screen Logo */}
@@ -110,25 +102,44 @@ export default function Header() {
               />
             </Link>
 
-            <Link href="/search">
-              <svg
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                className="text-black"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                />
-              </svg>
-            </Link>
+            <svg
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              className="text-black"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
           </Box>
-
+          <Menu
+            id="menu-appbar"
+            anchorEl={anchorElNav}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "left",
+            }}
+            keepMounted
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "left",
+            }}
+            open={Boolean(anchorElNav)}
+            onClose={handleCloseNavMenu}
+            sx={{ display: { xs: "block", md: "none" } }}
+          >
+            {pages.map((page) => (
+              <MenuItem key={page} onClick={handleCloseNavMenu}>
+                <Typography sx={{ textAlign: "center" }}>{page}</Typography>
+              </MenuItem>
+            ))}
+          </Menu>
           <Box
             sx={{ flexGrow: 1, display: { xs: "none", md: "flex" } }}
             className="justify-center gap-8"
@@ -136,7 +147,7 @@ export default function Header() {
             {/* TODO - style better */}
             {pages.map((page) => (
               <Button
-                key={page.title}
+                key={page}
                 onClick={handleCloseNavMenu}
                 sx={{
                   my: 2,
@@ -149,7 +160,7 @@ export default function Header() {
                 variant="text"
                 size="medium"
               >
-                {page.title}
+                {page}
               </Button>
             ))}
           </Box>
