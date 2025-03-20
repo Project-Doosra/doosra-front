@@ -1,6 +1,7 @@
 "use client";
 import { useState } from "react";
-import PlayerHeader from "./PlayerHeader";
+import PlayerHeader from "../player/PlayerHeader";
+
 
 interface TabProps {
   label: string;
